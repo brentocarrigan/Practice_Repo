@@ -1,0 +1,335 @@
+\documentclass[titlepage]{article}
+
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{standalone}
+% \usepackage{preview}
+\usepackage{mathtools}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage{mathrsfs}
+\usepackage{physymb}
+\usepackage{geometry}
+\usepackage{amssymb}
+\usepackage{subcaption}
+\usepackage{calligra}
+
+\geometry{margin=1.25in}
+
+
+\DeclareMathAlphabet{\mathcalligra}{T1}{calligra}{m}{n}
+\DeclareFontShape{T1}{calligra}{m}{n}{<->s*[2.2]callig15}{}
+\newcommand{\scr}{\mathcalligra{r}\,}
+
+
+\newcommand{\Lg}{\mathcal{L}}
+\newcommand{\Lh}{\hat{\Lg}}
+\newcommand{\dd}{\partial}
+%\newcommand{\dm}{}
+
+\def\beq{\begin{equation}}  
+\def\eeq{\end{equation}} 
+
+
+\title{The First Law of Black Hole Mechanics}
+
+\author{}
+
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+
+First laid out by Bardeen, Carter and Hawking in 1973 \cite{4laws73}, the laws of black hole mechanics describe the physics of classical black holes whilst bearing striking resemblance to the four laws of thermodynamics.
+
+% while having nothing to do with the actual thermodynamics of black holes. Their discovery was an important driving force for Hawking's 
+
+The focus of this essay is the first law. Put simply, it states that under certain perturbations of a black hole, the change in the area of the event horizon is related to the change in the ``global quantities'' of mass, angular momentum and charge.
+
+In its original formulation by Bardeen, Carter and Hawking, the first law was only proved for a time-independent, axisymmetric solution to the Einstein equations under perturbations to other time-independent, axisymmetric solutions.  Over the years, it has been proven for a larger family of theories \cite{sudarskyExtrema92}\cite{wald1993black} with fewer constraints on the perturbations.  With this essay, I hope to illuminate two of these proofs.  First, I will walk through the 1993 proof by Wald \cite{wald1993first} in Einstein-Maxwell theory, which works for a more general family of perturbations the original.  Then, following the work of Wald \cite{wald1993black}, I will prove the first law in a general, N-dimensional, diffeomorphism-invariant theory.
+
+
+% \footnote{Perturbations taking the black hole to other stationary, axisymmetric black holes. This means the perturbations satisfied a quite unique family of constraints thus reducing its applicability.}  The goal of this essay is to explain the proof of the first law of black hole mechanics in two different settings.  
+
+
+% In the simplest of settings (as laid out in \cite{4laws73}) the four laws of black hole mechanics are:
+
+% \beq
+% The surface gravity of a stationary black hole is constant over the event horizon
+% \eeq
+
+% As a slight extension, I consider 
+% Some implications for proofs of the other direction?
+
+% (a generalization of Einstein-Maxwell theory)
+
+% \subsection{First law as proved }
+
+% Before proving the first law in an Einstein-Yang-Mills theory, it is helpful to have some understanding of the first law in a simpler setting
+
+% In order to make sense of these proofs some definitions are necessary.  First, a \emph{stationary} 
+
+\section{Einstein-Maxwell}
+
+Why Einstein-Maxwell?  Even though charged black holes may be uncommon in nature (cite paper) it provides an interesting extension to the usual Einstein theory.  It is also a good first step when preparing to prove the law for any diffeomorphism invariant theory.
+
+Wald's 1992 proof of the first law in Einstein-Maxwell theory relies heavily on the Hamiltonian formulation of black hole mechanics. Specifically, a Hamiltonian presented by Regge and Teitelboim \cite{regge1974improved} for asymptotically flat spaces.  Once the Hamiltonian is obtained, the first law arises by varying the Hamiltonian with respect to the relevant parameters (the metric, the Maxwell potential, and their corresponding momenta) and enforcing the asymptotically flat conditions. 
+
+Before beginning this proof, I would like to first hint as to why the Hamiltonian formulation is a better approach for proving this theorem.  The end goal is a relation between several global quantities.  ADM formalism allows us to work more closely with the global quantities of mass, angular momentum, charge, and (obviously) energy.  Thus, it is easier to obtain variations of the energy and these other important quantities.
+
+\subsection{Set-up}
+
+I will prove this law with much of the same notation as Wald.
+
+% Let $(M,g)$ denote the manifold $M$ with Lorentzian metric $g_{\mu\nu}$. 
+
+Will always begin with initial data $(h_{ab},\pi^{ab},A_a,E^a)$ (defined on a spacelike, three-dimensional Cauchy hypersurface $\Sigma$) which satisff the Einstein and Maxwell constraints (more on those constraints later, see Eq.\ CONSTRAINTS).  Here, $h_{ab}$ is the Riemannian metric on $\Sigma$, with canonically conjugate momentum $\pi^{ab}$.  The three-component Maxwell potential on $\Sigma$ is $A_a$, with canonically conjugate momentum $4 \sqrt{h} E^a$.  I have left out an overall numerical factor of $\frac{1}{16\pi}$ from these momentum definitions so as to avoid confusion with $\pi^{ab}$ (and its trace, $\pi$ which will appear later).  I will put this numerical factor back in at the end of the calculation.
+
+First note that I will work with stationary, axisymmetric, asymptotically flat solutions.  Using a more general definition, an asymptotically flat spacetime $(M,g_{\mu\nu},A_\mu)$ is \emph{stationary} if it admits a Killing vector field $t^\mu$ that is timelike in a neighborhood of null infinity.  Similarly, $(M,g_{\mu\nu},A_\mu)$ is \emph{axisymmetric} if it admits a Killing vector field $\phi^\mu$ which is spacelike in a neighborhood of null infinity, and generates a 1-parameter group of isometries isomorphic to $U(1)$ \cite{ReallNotes}.  In other words, it approaches a rotation at infinity.  
+
+A spacetime is asymptotically flat if there exists some region etc. and if the following is true at null infinity:
+
+\beq
+\begin{aligned}
+&h_{ab}= \delta_{ab} + \tilde{h}_{ab}(\theta,\phi)/r+\mathcal{O}(r^{-1}), \\
+&\pi^{ab}= \tilde{\pi}^{ab}(\theta,\phi)/r^2+\mathcal{O}(r^{-2}), \\
+&A_{a} = \tilde{A}_{a}(\theta,\phi)/r+\mathcal{O}(r^{-1}), \\
+&E^{a}= \tilde{E}^{a}(\theta,\phi)/r^2+\mathcal{O}(r^{-2}). \\
+\end{aligned}
+\eeq
+
+
+Note that, following \cite{sudarskyExtrema92}, Latin indices indicate a tensor evaluated on $\Sigma$.  Tensors evaluated on four-dimensional spacetime, $M$, have Greek indices. Units are chosen such that $16\pi G=c=1$.  Thus, our action for Einstein-Maxwell theory on a spacetime $(M,g_{ab})$ is simply
+
+\beq
+S = \int_M \sqrt{-g}\left(R'-F_{\mu\nu}F^{\mu\nu}\right).
+\eeq
+
+\noindent
+Here, $R'$ is the Ricci scalar, $F_{\mu\nu}$ is the usual spacetime Maxwell field strength ($F_{\mu\nu} = 2 \nabla_{[\mu}A_{\nu]}$) and g is the determinant of the metric, $g_{ab}$.  From this action, we can begin to construct the Hamiltonian.
+
+
+% $g_{ab}$
+% This is a simpler calculation than the differential argument presented in the Bardeen, Carter and Hawking paper, while giving a more general result.
+
+% Moving forward it should be noted that \cite{sudarskyExtrema92} is responsible for this proof and I am simply attempting to make it more accessible.
+
+
+
+\subsection{Hamiltonian}
+
+The ADM Hamiltonian for Einstein-Maxwell theory is found by first making use of the $3+1$ decomposition of spacetime, giving the following metric:
+
+\beq
+ds^2=-N^2dt^2 + h_{ab}\left(dx^a+N^a dt\right)\left(dx^b+N^b dt\right).
+\eeq
+
+\noindent
+Here, $N(t,x)$ is the lapse function and $N^a(t,x)$ is the shift vector, together defining the time evolution vector, $N^\mu=(N,N^a)$. Thus, we take $\Sigma$ to be a constant $t$, spacelike hypersurface of $M$ with metric $h_{ab}$.  Using the Gauss-Codazzi equations relating geometric quantities on $M$ to those on $\Sigma$ we obtain the following action (CITE)
+
+\beq
+S=\int dt d^3x \sqrt{h} N \left(R+K_{ab}K^{ab}-K^2 - F_{ab}F^{ab}- \frac{2}{N^{2}} N^a F_{ab}E^b - \frac{2}{N^{2}} E_b E^b \right).
+\eeq
+
+% Sometimes I will combine these two into a 4 vector defined as $N^\mu :=(N,N^a)$.
+
+\noindent
+$R$ is the Ricci scalar on $\Sigma$, $E_a = F_{0a}$ is the electric field, $K_{ab}$ is the extrinsic curvature and $K$ is its trace.\footnote{I have also dropped surface terms here.}  The extrinsic curvature can be written
+
+\beq
+K_{ab}= \frac{1}{2N}\left(D_0 h_{ab}-D_aN_b-D_bN_a\right).
+\eeq
+
+\noindent
+Hence, this is now an action which depends only on $h_{ab}$, $A_\mu$, $N^\mu$ and their derivatives.  The next step in obtaining the Hamiltonian is identifying the momenta conjugate to $h_{ab}$ and $A_a$.  These are
+
+% \footnote{I have used a Greek index on $A$ to indicate that there is some dependence on $A_0$ and its derivatives.  In the end, it becomes clear that $A_0$ acts simply as a Lagrange multiplier along with $N^\mu$.}
+
+\beq
+\begin{aligned}
+\pi^{ab} &\equiv \frac{\delta S}{\delta \left(D_0 h_{ab}\right)} = \sqrt{h}\left( K^{ab} - K h^{ab} \right) \\
+P^a &\equiv \frac{\delta S}{\delta \left(D_0 A_{a}\right)} = \sqrt{h} \left( 4 N E^a -2 N^c F_c^{\ a} \right).
+\end{aligned}
+\eeq 
+
+\noindent
+By means of a Legendre transform we can now obtain the Hamiltonian for Einstein-Maxwell theory,
+
+% $\pi = -2 \sqrt{h}K$ and $\pi^{ab} - h^{ab} \pi/2 = \sqrt{h} K^{ab} $.
+
+\beq
+\begin{aligned}
+H &= \int_\Sigma \left( \pi^{ab} \dot{h}_{ab} + P^a \dot{A}_a - \Lg \right) .
+%  \\
+% &=\int_\Sigma  \left( \pi^{ab} \left( 2N K_{ab} + D_aN_b + D_b N_a  \right) + \frac{4\sqrt{h}}{N} E^a \left( D_a A_0 + E_a \right) \right) - \Lg  
+\end{aligned}
+\eeq
+
+Performing the necessary integration by parts (trading derivatives of $N^\mu$ or $A_0$ for derivatives of the other quantities) this simplifies considerably.  For now we drop all surface terms generated by integrating by parts.  This may seem counterintuitive, especially since the surface terms we obtain in this step correspond directly to some of the global quantities we need for the proof of the first law later on. For example, one term that we drop in this step is 
+
+\beq
+\oint_{\partial \Sigma} 2N^b\pi_{ab}/\sqrt{h}.
+\eeq
+
+\noindent
+Later, in Section NUMBER, we add this exact term back into our Hamiltonian.  So, one might ask, why drop it in the first place?  We ignore it here because we cannot obtain all of the required surface terms for the proof of the first law. We have to vary the Hamiltonian as we do in Section NUMBER in order to obtain those that remain. Thus, for simplicity, we ignore some crucial terms now in order to derive them all at once later on.
+
+Taking all of this into account, the Hamiltonian for Einstein-Maxwell theory in pure-constraint form is 
+
+\beq
+H = \int_\Sigma \left( N^\mu C_\mu + N^\mu A_\mu C \right),
+\eeq
+
+\noindent
+where the vanishing of the $C$'s defines the constraint submanifold (i.e.\ allowed initial data gives $C=C_0=C_a=0$):
+
+\beq
+\begin{aligned}
+&C    = 4 \sqrt{h} D_aE^a , \\
+&C_0  =\sqrt{h} \left[-R + 2E_aE^a + F_{ab}F^{ab} + \frac{1}{h}\left( \pi_{ab}\pi^{ab} - \frac{1}{2}\pi^2 \right) \right] , \\
+&C_a  =-2\left[ D_b\left(\pi^b_a \right)-2\sqrt{h} F_{ab}E^b \right].
+\end{aligned}
+\eeq
+
+
+\subsection{Variation of the Hamiltonian}
+
+Now that we have the Hamiltonian for Einstein-Maxwell theory, we can determine the effect of an arbitrary perturbation on some set of initial data. Let the initial data be $(h_{ab},\pi^{ab},A_a,E^a)$, satisfying the constraints ($C$'s vanish) on an asymptotically flat spacetime with an interior boundary, $S$.\footnote{The interior boundary corresponds to the horizon of the black hole.}  Now, consider an asymptotically flat perturbation $(\delta h_{ab},\delta\pi^{ab},\delta A_a,\delta E^a)$. Varying with respect to our fields and momenta will give a variation of our Hamiltonian.  The goal of this section is to calculate the variation of $H$.  We want it in the form of 
+
+\beq
+\delta H = \int_\Sigma \left[ P^{ab} \delta h_{ab} + Q_{ab}\delta \pi^{ab} +R^a\delta A_a + S_a\delta\left(\sqrt{h}E^a \right)    \right] + \oint_{\partial\Sigma}\text{Surface terms},
+\eeq
+
+\noindent
+where I denote the first integral by $\delta H_V$, the ``volume contribution.''  It is best to do this complicated calculation in parts.  I vary each individual $C$ with respect to each of the four parameters.  First $C$,
+
+\beq
+\delta C = \left[2 \sqrt{h} h^{ab}D_cE^c \right] \delta h_{ab} + \underline{4\sqrt{h} D_a\left(\delta E^a\right)}.
+\eeq
+
+\noindent
+Now $C_0$,
+
+\beq
+\begin{aligned}
+\delta C_0 =& \left[-\sqrt{h}R^{ab}-\frac{1}{h}h^{ab}\left( \pi_{cd}\pi^{cd} -\frac{1}{2} \pi^2 \right) -2\sqrt{h}E_cE^c h^{ab} \right] \delta h_{ab} + \frac{1}{h}\left[2\pi_{ab} - \pi^2 \pi_{ab} \right] \delta \pi^{ab} \\ &+ 4 E_a \delta\left( \sqrt{h} E^a \right) + \underline{4\sqrt{h}F^{ab}D_a(\delta A_b)} - \underline{\sqrt{h}D_a \left(h^{bc} \delta \Gamma^a_{bc} - h^{ab}\delta \Gamma^c_{bc} \right)}.
+\end{aligned}
+\eeq
+
+\noindent
+And finally, $C_a$,
+
+\beq
+\begin{aligned}
+\delta C_c &= h^{ab}\left[ - \sqrt{h}D_d\left(\pi_c^d /\sqrt{h}\right) + D_d\left(\pi_c^d\right) + 2 \sqrt{h}F_{cd}E^d  \right]\delta h_{ab} - 2 F_{ca}\delta\left(\sqrt{h} E^a \right) \\ &+ \underline{ h^{ab}  \pi_c^d D_d \left( \delta h_{ab} \right)  } -\underline{2D_b\left(\delta \pi_c^b\right)} - \underline{2E^aD_{[c} \delta A_{a]}}   .
+\end{aligned}
+\eeq
+
+
+The underlined terms are the ones which require integration by parts and thus give rise to surface terms.  By making use of the asymptotically flat condition on the data and the variations we can determine which of these surface terms vanish when evaluated at the asymptotically flat end.\footnote{The asymptotically flat condition puts a bound on the \emph{variations} of our fields and momenta as well.  The variations will be of next leading order in Eq.\ (1).  This means $\delta h_{ab} = \mathcal{O}\left(r^{-1}\right)$, $\delta\pi^{ab} = \mathcal{O}\left(r^{-2}\right)  $, etc.}  Remember $N^\mu C_\mu = -N^0 C_0 + N^a C_a$
+
+Suppose we first work in a spacetime with one asymptotically flat end, and no interior boundary (no black hole).  Integrating by parts thus gives the following:
+
+\beq
+\delta H = \delta H_V + \oint_{\infty}n^a\left[N^0\left( - \partial^b\delta h_{ab} + \partial_a\delta h^b_b \right) - 2 N^b \delta \pi_{ab} - 4 N^\mu A_\mu \delta\left(E_a \sqrt{h}  \right) \right] .
+\eeq
+
+Sign Error ^^
+
+\noindent
+Here, $n^a$ is the normal to the surface at null infinity (limit as $r\rightarrow \infty$) and $\delta H_V$ is the volume contribution as defined in Eq.\ (11).  Ideally, when varying the Hamiltonian, we would simply obtain a volume contribution.  Thus, we add these surface terms to our initial Hamiltonian giving
+
+\beq
+\tilde H \equiv H + \oint_{\infty}n^a\left[N^0\left( \partial^b h_{ab} - \partial_a h^b_b \right) + 2 N^b  \pi_{ab} + 4 N^\mu A_\mu E_a \sqrt{h} \right] .
+\eeq
+
+\noindent
+As suggested in \cite{wald1993first}, this Hamiltonian now acts as a ``true Hamiltonian on phase space.''  These surface terms correspond to the mass, angular momentum and charge terms in the first law of black hole mechanics, under specific values for $N^\mu$.  Also, remember that $H$, as defined in Eq.\ (9), is identically zero when evaluated on the constraint submanifold.  As is customary, \cite{sudarskyExtrema92}, we can then define the canonical energy, $\mathcal{E}$, as the numerical value of $\tilde H $ on the constraint submanifold.
+
+\subsection{First Law}
+
+\noindent
+To recap, our goal is to ``draw out'' the global quantities of mass, charge, and angular momentum hiding \emph{within} these surface terms.  The next step is considering the cases where $N^\mu$ corresponds to two different Killing vectors (recall $N^\mu$ is arbitrary.) First, if $N^\mu$ approaches a time translation at infinity, second, a rotation at infinity.  In the first case, $N\rightarrow 1$, and $N^a\rightarrow 0$ and our adjusted Hamiltonian becomes
+
+\beq
+\tilde{H} = \mathcal{E} = \oint_{\infty}n^a \left[ \partial^b h_{ab} - \partial_a h^b_b \right] + 4 \oint_{\infty}n^a  A_0 E_a = m + VQ .
+\eeq
+
+\noindent
+Here, $m$ corresponds to the usual definition of ADM mass, $V$ is the asymptotic value of $A_0$, and $Q$ is the electric charge associated with the asymptotically flat end (section 8.1 in \cite{ReallNotes}.)  Now we have an expression for the adjusted Hamiltonian in terms of the mass and charge.
+
+Now, say $N^\mu$ approaches a rotation at infinity.  This means $N^0\rightarrow 0$ and $N^a\rightarrow \phi^a$, an asymptotic rotational Killing field.  We then get 
+
+\beq
+\tilde{H} = -\oint_{\infty}n^a \left[2 \phi^b  \pi_{ab} + 4 \phi^b A_b E_a \right] = J
+\eeq
+
+\noindent
+Considering these two cases separately has allowed us to identify the angular momentum, mass and charge terms in the adjusted Hamiltonian.
+
+The calculations so far have been for a spacetime with one end. In order to obtain the term in the first law depending on the surface gravity and black hole entropy we must consider a spacetime with an interior boundary, $S$, the bifurcate Killing horizon of a black hole.  This means there will be surface integrals evaluated at $S$ matching the ones we already evaluated at the asymptotic end.  Bear in mind, I dropped most of these from Eq.\ (15) by asymptotic flatness arguments.  Those will not apply to the boundary at $S$.  Thus, one might expect a complicated expression that could not possibly correspond to black hole entropy. 
+
+This is mitigated by the existence of the two Killing fields, $t^\mu$ and $\phi^\mu$, and the bifurcation surface.  GIVE reason for existence of vanishing linear combination of t and phi.  This means that we can choose a linear combination of $N^\mu=t^\mu + \Omega \phi^mu$ ($\Omega$ is the angular velocity of the horizon), which is zero on $S$.  If $N^\mu$ vanishes on $S$, then we can greatly simplify our surface integrals at $S$; the only terms which contribute will not depend on $N^\mu$ rather they will involve derivatives of $N^\mu$. Thus, the variation of the Hamiltonian becomes
+
+\beq
+\delta H = \delta H_V + \delta m + V\delta Q - \Omega \delta J +\oint_\infty n^c  D_d \left(N^0\right) \left[ h_c^ah^{db}-h_c^dh^{ab} \right] \delta h_{ab}.
+\eeq
+
+\noindent
+As defined in SOURCE, the derivative of $N^0$ normal to S is proportional to the surface gravity, $\kappa$.  Finally, the rest of the term is simply the variation of the area of $S$.  Thus,
+
+\beq
+\delta H = \delta H_V + \delta m + V\delta Q - \Omega \delta J + 2\kappa \delta A.
+\eeq
+
+
+Now we can obtain a closed form of the first law of black hole mechanics.  As a reminder, let me first go through the conditions we require.  $(M,g_{\mu\nu},A_\mu)$ is a solution to the Einstein-Maxwell equations describing a stationary, axisymmetric black hole.  $S$ is the 
+
+Take initial data, $( h_{ab},\pi^{ab}, A_a, E^a)$, defined on the spacelike hypersurface $\Sigma$ with interior boundary $S$ and one asymptotically flat end.  Perturb this initial solution by $(\delta h_{ab},\delta\pi^{ab},\delta A_a,\delta E^a)$, an arbitrary, asymptotically flat solution of the linearized constraints.  Then, (putting back in the $1/16\pi$ we dropped earlier) we find 
+
+\beq
+\delta m + V \delta Q -\Omega \delta J= \frac{1}{8\pi} \kappa \delta A
+\eeq
+
+
+
+we consider the case where there is an interior boundary in our spacetime.  This interior boundary, $S$, will be the bifurcation surface of a stationary, axisymmetric black hole. (give definition) 
+
+
+% &= \int_\Sigma \left[ \frac{1}{\sqrt{h}} \pi^{ab}  \left( 2 N \pi_{ab} - N \pi h_{ab} + 2D_{(a}N_{b)} \right) - \sqrt{h} N R - \frac{N}{\sqrt{h}} \left( \pi^{ab}-\frac{1}{2}\pi h^{ab}  \right) \left( \pi_{ab}-\frac{1}{2}\pi h_{ab} \right) - \frac{N}{4\sqrt{h}}\pi^2   \right]  \\ 
+% % 
+% &+\left[ \frac{4\sqrt{h}}{N}E^a E_a  +\frac{4\sqrt{h}}{N}E^a D_a A_0 +\sqrt{h}N  F_{ab}F^{ab} + \frac{2\sqrt{h}}{N}N^aF_{ab}E^b +\frac{2\sqrt{h}}{N}E_bE^b   \right]
+
+
+
+
+\newpage
+
+The Hamiltonian, first introduced in \cite{regge1974improved} and generalized to Einstein-Maxwell by Sudarsky and Wald \cite{sudarskyExtrema92} is 
+
+\beq
+H_V=\int_\Sigma\left(N^\mu\mathcal{C}_\mu+N^\mu A_\mu \mathcal{C} \right)
+\eeq
+
+
+
+
+% Additionally, $\mathcal{L}_t A_\mu=\mathcal{L}_\phi A_\mu=0$, i.e.\ I choose a gauge in which the Lie derivatives of the Maxwell potential with respect to $t$ and $\phi$ vanish.  This will be relevant later in the proof.
+
+% \begin{figure}
+% \begin{center}
+% \resizebox{3.5 in}{!}{\includegraphics{Maggrid.pdf}}
+% \caption{\label{BGrid} The $\mathbf{B}$ field for both E\&M and our new field theory, with $\mu=1$.  They line up, but the E\&M contribution is stronger, which is why we only see the blue vector field. }
+% \end{center}
+% \end{figure}
+
+
+\nocite{*}
+\newpage
+\bibliography{BH_EssayBib}{}
+\bibliographystyle{plain}
+\end{document}
